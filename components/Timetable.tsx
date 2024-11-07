@@ -1,6 +1,6 @@
-import { colors } from "@/styles/colors";
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { colors } from '@/styles/colors';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 interface TimetableProps {
     weekday: string;
@@ -13,10 +13,10 @@ const Timetable: React.FC<TimetableProps> = ({ weekday, data }) => {
             <Text style={styles.mainText}>{weekday}</Text>
             {/* Mapeando os dados para renderizar cada aula */}
             {data.map((classData, index) => (
-                <ClassTime 
-                    key={index} 
-                    subject={classData.key} 
-                    hour={classData.value} 
+                <ClassTime
+                    key={index}
+                    subject={classData.key}
+                    hour={classData.value}
                     isEven={index % 2 === 0} // Passa true se o índice for par
                 />
             ))}
@@ -32,7 +32,9 @@ interface ClassTimeProps {
 
 const ClassTime: React.FC<ClassTimeProps> = ({ subject, hour, isEven }) => {
     return (
-        <View style={[styles.classTime, isEven ? styles.evenRow : styles.oddRow]}>
+        <View
+            style={[styles.classTime, isEven ? styles.evenRow : styles.oddRow]}
+        >
             <Text style={[styles.text, styles.subject]}>{subject}</Text>
             <Text style={[styles.text, styles.hour]}>{hour}</Text>
         </View>
@@ -42,33 +44,32 @@ const ClassTime: React.FC<ClassTimeProps> = ({ subject, hour, isEven }) => {
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        borderRadius: 10
+        borderRadius: 10,
     },
     mainText: {
         textAlign: 'center',
         fontWeight: 'bold',
-        padding: 10
+        padding: 10,
     },
     classTime: {
         flexDirection: 'row',
-        
     },
     evenRow: {
-        backgroundColor: colors.blue[100], 
+        backgroundColor: colors.blue[100],
     },
     oddRow: {
-        backgroundColor: 'transparent', 
+        backgroundColor: 'transparent',
     },
     text: {
         textAlign: 'center',
-        padding: 5
+        padding: 5,
     },
-    subject:{
-        minWidth: 50
+    subject: {
+        minWidth: 50,
     },
-    hour:{
-        flexGrow: 1
-    }
+    hour: {
+        flexGrow: 1,
+    },
 });
 
 // Exporta o componente Timetable como padrão

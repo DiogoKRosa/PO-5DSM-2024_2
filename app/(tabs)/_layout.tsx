@@ -50,10 +50,9 @@ export default function TabLayout() {
                         >
                             <Pressable>
                                 {({ pressed }) => (
-                                    <UserImage 
+                                    <UserImage
                                         image={require('../../assets/images/profile-image_default.png')}
                                     />
-                                    
                                 )}
                             </Pressable>
                         </Link>
