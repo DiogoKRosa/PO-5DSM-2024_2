@@ -39,26 +39,30 @@ const ClassTime: React.FC<ClassTimeProps> = ({ subject, grade}) => {
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        borderRadius: 10
+        borderRadius: 10,
     },
     mainText: {
         fontWeight: 'bold',
-        paddingLeft: 5
+        paddingLeft: 5,
+        color: "#1A3E78"
     },
     classTime: {
         flexDirection: 'row',
-        
     },
     text: {
         textAlign: 'center',
-        padding: 5
+        padding: 5,
+        fontFamily: 'League Spartan',
     },
     subject:{
         minWidth: 100,
-        textAlign: 'left'
+        textAlign: 'left',
+        fontFamily: 'League Spartan',
     },
     grade:{
-        flexGrow: 1
+        flexGrow: 1,
+        textAlign: 'right',
+        fontFamily: 'League Spartan',
     }
 });
 

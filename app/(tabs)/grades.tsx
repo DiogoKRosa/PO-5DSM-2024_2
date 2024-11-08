@@ -1,34 +1,73 @@
-import { StyleSheet } from 'react-native';
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import React, { useState } from 'react';
+import {
+    View,
+    Text,
+    TouchableOpacity,
+    StyleSheet,
+    ScrollView,
+    Image,
+    SafeAreaView,
+} from 'react-native';
 
-export default function TabTwoScreen() {
+import GradeTable from '../../components/Gradetable';
+
+export default function TelaNotas() {
+    const dados = {
+        nome: 'Lucas',
+        email: 'lucas@facul.com',
+        turma: 'DSM 5',
+        ra: '34567809876',
+        frequencia: 72.33,
+    };
+
+    const testData2 = [
+        { key: 'Atividades 1', value: '4,5' },
+        { key: 'Avaliação', value: '6,7' },
+        { key: 'Projetos', value: '9,4' },
+        { key: 'Atividades 2', value: '6,5' },
+        { key: 'Média', value: '6,7' },
+    ];
+
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Tab Two</Text>
-            <View
-                style={styles.separator}
-                lightColor='#eee'
-                darkColor='rgba(255,255,255,0.1)'
-            />
-            <EditScreenInfo path='app/(tabs)/index.tsx' />
-        </View>
+        <SafeAreaView style={styles.container}>
+            <ScrollView style={styles.gradeContainer}>
+                <View style={styles.gradeTable}>
+                    <GradeTable
+                        weekday='Programação para dispositivos móveis I'
+                        data={testData2}
+                    />
+                </View>
+
+                <View style={styles.gradeTable}>
+                    <GradeTable
+                        weekday='Programação para dispositivos móveis II'
+                        data={testData2}
+                    />
+                </View>
+
+                <View style={styles.gradeTable}>
+                    <GradeTable
+                        weekday='Laboratório de Desenvolvimento para Dispositivos Móveis'
+                        data={testData2}
+                    />
+                </View>
+            </ScrollView>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: '#fff',
+        flexDirection: 'column',
     },
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
+    gradeTable: {
+        marginBottom: 20,
     },
-    separator: {
-        marginVertical: 30,
-        height: 1,
-        width: '80%',
-    },
+    gradeContainer:{
+        marginEnd: 16,
+        marginStart: 16,
+        marginTop: 16
+    }
 });
