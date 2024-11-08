@@ -1,93 +1,244 @@
-import { StyleSheet } from 'react-native';
-import { useState } from 'react';
+import React from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
-//import EditScreenInfo from '@/components/EditScreenInfo';
-import { View } from '@/components/Themed';
-import CustomButtom from '@/components/CustomButton';
-import CustomInput from '@/components/CustomInput';
-import Timetable from '@/components/Timetable';
-import GradeTable from '@/components/Gradetable';
-
-export default function TabOneScreen() {
-
-    const [inputValue, setInputValue] = useState('');
-    const [inputValue2, setInputValue2] = useState('');
-
-    const data = [
-        { label: 'Item 1', value: '1' },
-        { label: 'Item 2', value: '2' },
-        { label: 'Item 3', value: '3' },
-        { label: 'Item 4', value: '4' },
-        { label: 'Item 5', value: '5' },
-        { label: 'Item 6', value: '6' },
-        { label: 'Item 7', value: '7' },
-        { label: 'Item 8', value: '8' },
-      ];
-
-      const testData = [
-        { key: 'FRT', value: '08:00 - 09:00' },
-        { key: 'CN1', value: '09:00 - 10:00' },
-        { key: 'DM2', value: '09:00 - 10:00' },
-    ];
-
-      const testData2 = [
-        { key: 'Atividades 1', value: '4,5' },
-        { key: 'Avaliação', value: '6,7' },
-        { key: 'Projetos', value: '9,4' },
-        { key: 'Atividades 2', value: '6,5' },
-        { key: 'Média', value: '6,7' }
-    ];
-
+// Componente SubjectsTable
+function SubjectsTable() {
     return (
-        <View style={styles.container}>
-            {/* <Text style={styles.title}>Tab One</Text>
-            <View
-                style={styles.separator}
-                lightColor='#eee'
-                darkColor='rgba(255,255,255,0.1)'
-            />
-            <EditScreenInfo path='app/(tabs)/grades.tsx' /> */}
+        <View style={styles.subjectsContainer}>
+            <Text style={[styles.subjectsTitle, { left: 29 }]}>Sigla</Text>
+            <Text style={[styles.subjectsTitle, { left: 122 }]}>
+                Disciplina
+            </Text>
 
-            <CustomInput
-                value={inputValue2} // valor atual do input
-                onChangeText={setInputValue2} // função chamada ao mudar o texto
-                placeholder={"Senha"} // Placeholder
-                secureTextEntry={false}
-                keyboardType='default'
-            />
+            {subjectsData.map((item, index) => (
+                <View
+                    key={index}
+                    style={styles.subjectRow}
+                >
+                    <Text style={[styles.subjectSigla, { top: item.top }]}>
+                        {item.sigla}
+                    </Text>
+                    <Text style={[styles.subjectDisciplina, { top: item.top }]}>
+                        {item.disciplina}
+                    </Text>
+                </View>
+            ))}
 
-            <CustomInput
-                value={inputValue} // valor atual do input
-                onChangeText={setInputValue} // função chamada ao mudar o texto
-                placeholder={"Senha"} // Placeholder
-                secureTextEntry={true}
-                keyboardType='default'
-            />
-            
-            <CustomButtom title={"Teste"} action={() => alert(inputValue)} />
-
-            <Timetable weekday="Segunda Feira" data={testData} />
-
-            <GradeTable weekday="Programação para dispositivos móveis" data={testData2} />
-
+            <View style={styles.horizontalLineTop} />
+            <View style={styles.horizontalLineBottom} />
+            <View style={styles.verticalLine} />
         </View>
     );
 }
 
+const subjectsData = [
+    { sigla: 'IAL', disciplina: 'Internet das Coisas e Aplicações', top: 42 },
+    { sigla: 'IHC', disciplina: 'Experiência do Usuário', top: 68 },
+    {
+        sigla: 'ILP',
+        disciplina: 'Programação para dispositivos móveis',
+        top: 94,
+    },
+    { sigla: 'ING', disciplina: 'Inglês II', top: 134 },
+    { sigla: 'IEC', disciplina: 'Integração e Entrega Continua', top: 160 },
+];
+
+// Componente HorariosScreen
+export default function HorariosScreen() {
+    return (
+        <View style={styles.container}>
+            <View style={styles.overlay} />
+
+            {/* SubjectsTable integrado */}
+            <SubjectsTable />
+
+            {/* ScrollView para permitir rolagem quando necessário */}
+            <ScrollView contentContainerStyle={styles.scheduleContainer}>
+                <ScheduleCard
+                    day='Segunda - Feira'
+                    times={[
+                        '18:30 - 19:20',
+                        '19:20 - 20:10',
+                        '20:10 - 21:00',
+                        '21:10 - 22:00',
+                        '22:00 - 22:50',
+                    ]}
+                    subjects={['IAL', 'IAL', 'IAL', 'IHC', 'IHC']}
+                />
+                <ScheduleCard
+                    day='Terça - Feira'
+                    times={[
+                        '18:30 - 19:20',
+                        '19:20 - 20:10',
+                        '20:10 - 21:00',
+                        '21:10 - 22:00',
+                        '22:00 - 22:50',
+                    ]}
+                    subjects={['IAL', 'IAL', 'IAL', 'IHC', 'IHC']}
+                />
+                <ScheduleCard
+                    day='Quarta - Feira'
+                    times={[
+                        '18:30 - 19:20',
+                        '19:20 - 20:10',
+                        '20:10 - 21:00',
+                        '21:10 - 22:00',
+                        '22:00 - 22:50',
+                    ]}
+                    subjects={['IAL', 'IAL', 'IAL', 'IHC', 'IHC']}
+                />
+                <ScheduleCard
+                    day='Quinta - Feira'
+                    times={[
+                        '18:30 - 19:20',
+                        '19:20 - 20:10',
+                        '20:10 - 21:00',
+                        '21:10 - 22:00',
+                        '22:00 - 22:50',
+                    ]}
+                    subjects={['IAL', 'IAL', 'IAL', 'IHC', 'IHC']}
+                />
+                <ScheduleCard
+                    day='Sexta - Feira'
+                    times={[
+                        '18:30 - 19:20',
+                        '19:20 - 20:10',
+                        '20:10 - 21:00',
+                        '21:10 - 22:00',
+                        '22:00 - 22:50',
+                    ]}
+                    subjects={['IAL', 'IAL', 'IAL', 'IHC', 'IHC']}
+                />
+            </ScrollView>
+        </View>
+    );
+}
+
+// Componente ScheduleCard
+function ScheduleCard({ day, times, subjects }) {
+    return (
+        <View style={styles.scheduleCard}>
+            <Text style={styles.scheduleCardDay}>{day}</Text>
+            {times.map((time, index) => (
+                <View
+                    key={index}
+                    style={styles.scheduleRow}
+                >
+                    <Text style={styles.scheduleSubject}>
+                        {subjects[index]}
+                    </Text>
+                    <Text style={styles.scheduleTime}>{time}</Text>
+                </View>
+            ))}
+        </View>
+    );
+}
+
+// Estilos
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        //alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
     },
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
+    overlay: {
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: 'white',
+        opacity: 0.77,
     },
-    separator: {
-        marginVertical: 30,
+    subjectsContainer: {
+        width: 378,
+        height: 188,
+        position: 'relative',
+        backgroundColor: 'white',
+        marginTop: 20,
+    },
+    subjectsTitle: {
+        position: 'absolute',
+        color: '#1A3E78',
+        fontSize: 16,
+        fontFamily: 'Montserrat',
+        fontWeight: '600',
+    },
+    subjectSigla: {
+        position: 'absolute',
+        left: 29,
+        color: '#1A3E78',
+        fontSize: 12,
+        fontFamily: 'Montserrat',
+        fontWeight: '500',
+    },
+    subjectDisciplina: {
+        position: 'absolute',
+        left: 122,
+        width: 216,
+        color: '#1A3E78',
+        fontSize: 12,
+        fontFamily: 'Montserrat',
+        fontWeight: '500',
+    },
+    subjectRow: {
+        position: 'relative',
+    },
+    horizontalLineTop: {
+        position: 'absolute',
+        width: 338,
         height: 1,
-        width: '80%',
+        left: 0,
+        top: 31,
+        backgroundColor: '#D9D9D9',
+    },
+    horizontalLineBottom: {
+        position: 'absolute',
+        width: 338,
+        height: 1,
+        left: 0,
+        top: 187,
+        backgroundColor: '#D9D9D9',
+    },
+    verticalLine: {
+        position: 'absolute',
+        width: 1,
+        height: 188,
+        left: 96,
+        backgroundColor: '#D9D9D9',
+    },
+    scheduleContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+        marginTop: 30,
+        paddingBottom: 30, // Adicionado para garantir espaço ao final
+    },
+    scheduleCard: {
+        width: '45%',
+        marginVertical: 10,
+        paddingVertical: 20,
+        alignItems: 'center',
+        borderRadius: 16,
+        backgroundColor: 'rgba(112, 155, 239, 0.09)',
+    },
+    scheduleCardDay: {
+        fontSize: 12,
+        fontFamily: 'Montserrat',
+        fontWeight: '600',
+        color: 'black',
+        marginBottom: 10,
+    },
+    scheduleRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '90%',
+    },
+    scheduleSubject: {
+        fontSize: 12,
+        fontFamily: 'Montserrat',
+        fontWeight: '500',
+        color: 'black',
+    },
+    scheduleTime: {
+        fontSize: 12,
+        fontFamily: 'Montserrat',
+        fontWeight: '500',
+        color: '#2A2828',
     },
 });
