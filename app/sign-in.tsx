@@ -2,7 +2,7 @@ import { Button, StyleSheet } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { Link, useNavigation, useRouter } from 'expo-router';
 export default function SignIn() {
-    const {replace} = useRouter();
+    const { replace } = useRouter();
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Login Screen</Text>
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: 'black'
+        color: 'black',
     },
     separator: {
         marginVertical: 30,

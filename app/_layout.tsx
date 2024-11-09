@@ -31,7 +31,7 @@ function RootLayoutNavigation() {
     const loadFonts = async () => {
         try {
             await loadAsync({
-                'Montserrat': require('@/assets/fonts/Montserrat-Regular.ttf'),
+                Montserrat: require('@/assets/fonts/Montserrat-Regular.ttf'),
             });
         } catch (e) {
             console.log(e);
@@ -40,7 +40,6 @@ function RootLayoutNavigation() {
         }
         await SplashScreen.hideAsync();
     };
-
 
     useEffect(() => {
         loadFonts();
@@ -52,7 +51,10 @@ function RootLayoutNavigation() {
             value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
         >
             <Stack initialRouteName={isLogged ? '(app)/(tabs)' : 'sign-in'}>
-                <Stack.Screen name='(app)/(tabs)' options={{ presentation: 'modal', headerShown: false }} />
+                <Stack.Screen
+                    name='(app)/(tabs)'
+                    options={{ presentation: 'modal', headerShown: false }}
+                />
                 <Stack.Screen
                     name='sign-in'
                     options={{ presentation: 'modal' }}

@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         textAlign: 'justify',
         fontFamily: 'Montserrat',
-        fontWeight: '500'
+        fontWeight: '500',
     },
     avisosText2: {
         fontFamily: 'Montserrat',

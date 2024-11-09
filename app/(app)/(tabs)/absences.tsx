@@ -25,9 +25,7 @@ const Frequencia = () => {
                 <DataTable.Title textStyle={styles.text}>
                     Faltas
                 </DataTable.Title>
-                <DataTable.Title textStyle={styles.text}>
-                    %
-                </DataTable.Title>
+                <DataTable.Title textStyle={styles.text}>%</DataTable.Title>
             </DataTable.Header>
             {data.map((item) => {
                 const percentage = (item.attendances / MAX_ATTENDANCES) * 100;
@@ -38,7 +36,8 @@ const Frequencia = () => {
                         </DataTable.Cell>
                         <DataTable.Cell>{item.attendances}</DataTable.Cell>
                         <DataTable.Cell>{item.absences}</DataTable.Cell>
-                        <DataTable.Cell textStyle={styles.text}
+                        <DataTable.Cell
+                            textStyle={styles.text}
                         >{`${percentage}%`}</DataTable.Cell>
                     </DataTable.Row>
                 );
@@ -58,7 +57,7 @@ const styles = StyleSheet.create({
     text: {
         fontFamily: 'Montserrat',
         fontWeight: '500',
-    }
+    },
 });
 
 export default Frequencia;

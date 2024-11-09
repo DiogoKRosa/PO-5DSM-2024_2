@@ -29,14 +29,14 @@ export default function TabLayout() {
                 tabBarLabelStyle: {
                     fontFamily: 'Montserrat',
                     fontWeight: '500',
-                    fontSize: 10
+                    fontSize: 10,
                 },
                 tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
                 tabBarInactiveTintColor:
                     Colors[colorScheme ?? 'light'].tabIconDefault,
                 headerTitleStyle: {
                     fontFamily: 'Montserrat',
-                    fontWeight: '500'
+                    fontWeight: '500',
                 },
                 tabBarStyle: {
                     backgroundColor: '#D2E0FB',
@@ -59,14 +59,15 @@ export default function TabLayout() {
                         />
                     ),
                     headerRight: () => (
-                        <View style={{
-                            marginRight: 12
-                        }}>
+                        <View
+                            style={{
+                                marginRight: 12,
+                            }}
+                        >
                             <FontAwesome5
                                 name='user-circle'
                                 size={24}
                                 color='#1A3E78'
-
                             />
                         </View>
                     ),
@@ -83,14 +84,15 @@ export default function TabLayout() {
                         />
                     ),
                     headerRight: () => (
-                        <View style={{
-                            marginRight: 12
-                        }}>
+                        <View
+                            style={{
+                                marginRight: 12,
+                            }}
+                        >
                             <FontAwesome5
                                 name='user-circle'
                                 size={24}
                                 color='#1A3E78'
-
                             />
                         </View>
                     ),
@@ -108,14 +110,15 @@ export default function TabLayout() {
                         />
                     ),
                     headerRight: () => (
-                        <View style={{
-                            marginRight: 12
-                        }}>
+                        <View
+                            style={{
+                                marginRight: 12,
+                            }}
+                        >
                             <FontAwesome5
                                 name='user-circle'
                                 size={24}
                                 color='#1A3E78'
-
                             />
                         </View>
                     ),
@@ -128,19 +131,19 @@ export default function TabLayout() {
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon
                             name='exclamation'
-
                             color={color}
                         />
                     ),
                     headerRight: () => (
-                        <View style={{
-                            marginRight: 12
-                        }}>
+                        <View
+                            style={{
+                                marginRight: 12,
+                            }}
+                        >
                             <FontAwesome5
                                 name='user-circle'
                                 size={24}
                                 color='#1A3E78'
-
                             />
                         </View>
                     ),
