@@ -42,19 +42,16 @@ export default function TelaAvisos() {
     ];
 
     const studentId = 33;
+    const fetchUser = async () => {
+        try {
+            const response = await api.get<User>(`/api/students/${studentId}`); // Aqui a resposta é tipada como `User`
+            setUser(response.data);
+        } catch (error) {
+            console.error('Erro ao buscar usuário:', error);
+        }
+    };
 
     useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                const response = await api.get<User>(
-                    `/api/students/${studentId}`,
-                ); // Aqui a resposta é tipada como `User`
-                setUser(response.data);
-            } catch (error) {
-                console.error('Erro ao buscar usuário:', error);
-            }
-        };
-
         fetchUser();
     }, []);
 
@@ -91,13 +88,19 @@ export default function TelaAvisos() {
                                 >
                                     <View style={styles.aaa}>
                                         <Text style={styles.avisosText1}>
-                                            {aviso.content}
+                                            {aviso.content.length > 15
+                                                ? aviso.content
+                                                      .substring(0, 30)
+                                                      .concat('...')
+                                                : aviso.content}
                                         </Text>
                                     </View>
 
                                     <View style={styles.bbb}>
                                         <Text style={styles.avisosText2}>
-                                            {aviso.date}
+                                            {aviso.date
+                                                .replace('-', '/')
+                                                .slice(0, -5)}
                                         </Text>
                                     </View>
                                 </View>
@@ -114,38 +117,40 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
+        paddingHorizontal: 24,
     },
     nome: {
         color: '#1A3E78',
-        fontWeight: 'bold',
+        fontWeight: '700',
         fontSize: 16,
     },
     email: {
         color: '#1A3E78',
-        fontWeight: 'bold',
+        fontWeight: '700',
         fontSize: 12,
     },
     info: {
         color: '#1A3E78',
-        fontWeight: 'bold',
         fontSize: 14,
         padding: 4,
+        fontFamily: 'Montserrat',
+        fontWeight: '700',
     },
     containerInfo: {
-        padding: 15,
+        //padding: 15,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'flex-end',
         width: '100%',
     },
     containerAvisos: {
-        width: 350, // largura mínima
-        minHeight: 300, // altura mínima
+        width: '100%',
+        minHeight: 300,
         padding: 10,
         backgroundColor: '#D2E0FB',
         borderRadius: 10,
         marginTop: 60,
-        marginBottom: 100
+        marginBottom: 100,
     },
     conteudo: {
         flexDirection: 'column',
@@ -153,12 +158,14 @@ const styles = StyleSheet.create({
     },
     avisoTitle: {
         fontSize: 20,
-        fontWeight: 'bold',
+        fontWeight: '700',
         color: '#1A3E78',
+        fontFamily: 'Montserrat',
     },
     avisosContainer: {
         marginTop: 15,
         flexDirection: 'column',
+        paddingHorizontal: 1,
     },
     avisos: {
         flexDirection: 'row',
@@ -169,15 +176,19 @@ const styles = StyleSheet.create({
         color: '#2C3E50',
         flexWrap: 'wrap',
         textAlign: 'justify',
+        fontFamily: 'Montserrat',
+        fontWeight: '500'
     },
     avisosText2: {
+        fontFamily: 'Montserrat',
+        fontWeight: '700',
         color: '#2C3E50',
         flexWrap: 'wrap',
     },
     aaa: {
-        width: '65%',
+        //width: '65%',
     },
     bbb: {
-        width: '25%',
+        //width: '25%',
     },
 });

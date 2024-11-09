@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, Image } from "react-native";
+import React from 'react';
+import { StyleSheet, Image } from 'react-native';
 
 interface UserImageProps {
     image: string | number;
@@ -8,17 +8,21 @@ interface UserImageProps {
 const defaultImage = require('@/assets/images/profile-image_default.png');
 
 const UserImage: React.FC<UserImageProps> = ({ image }) => {
-
-    const source = typeof image === 'number' ? image : (image ? { uri: image } : defaultImage);
+    const source =
+        typeof image === 'number'
+            ? image
+            : image
+              ? { uri: image }
+              : defaultImage;
 
     return (
         <Image
-            source={source} 
+            source={source}
             style={styles.image}
-            resizeMode="center"
+            resizeMode='center'
         />
     );
-}
+};
 
 const styles = StyleSheet.create({
     image: {
@@ -26,8 +30,8 @@ const styles = StyleSheet.create({
         height: 36,
         borderRadius: 20,
         marginRight: 10,
-        backgroundColor: "#F1F1F1"
-    }
-})
+        backgroundColor: '#F1F1F1',
+    },
+});
 
 export default UserImage;

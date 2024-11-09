@@ -1,90 +1,71 @@
+import { useEffect } from 'react';
+import { loadAsync, useFonts } from 'expo-font';
 import {
-    Montserrat_100Thin,
-    Montserrat_200ExtraLight,
-    Montserrat_300Light,
-    Montserrat_400Regular,
-    Montserrat_500Medium,
-    Montserrat_600SemiBold,
-    Montserrat_700Bold,
-    useFonts,
-  } from '@expo-google-fonts/montserrat';
-  import FontAwesome from '@expo/vector-icons/FontAwesome';
-  import {
     DarkTheme,
     DefaultTheme,
     ThemeProvider,
-  } from '@react-navigation/native';
-  import { Stack } from 'expo-router';
-  import * as SplashScreen from 'expo-splash-screen';
-  import { useEffect } from 'react';
-  import 'react-native-reanimated';
-  import { useColorScheme } from '@/components/useColorScheme';
-  import { useAuth } from '@/hooks/auth';
-  
-  SplashScreen.preventAutoHideAsync();
-  
-  function RootLayoutNavigation({
-    userAlreadyLogged,
-  }: {
-    userAlreadyLogged: boolean;
-  }) {
+} from '@react-navigation/native';
+import { Link, Stack } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
+import 'react-native-reanimated';
+import { useColorScheme } from '@/components/useColorScheme';
+import { useAuth } from '@/hooks/auth';
+import { FontAwesome } from '@expo/vector-icons';
+import TabLayout from './(app)/(tabs)/_layout';
+import React from 'react';
+// import '@/assets/fonts/Montserrat-Medium.ttf'
+// import '@/assets/fonts/Montserrat-Bold.ttf'
+// import '@/assets/fonts/Montserrat-SemiBold.ttf'
+export const unstable_settings = {
+    // Ensure any route can link back to `/`
+    initialRouteName: 'sign-in',
+};
+
+SplashScreen.preventAutoHideAsync();
+
+function RootLayoutNavigation() {
     const colorScheme = useColorScheme();
-    return (
-      <ThemeProvider
-        value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
-      >
-        <Stack initialRouteName={userAlreadyLogged ? '(tabs)' : 'login'}>
-          <Stack.Screen
-            name='modal'
-            options={{ presentation: 'modal' }}
-          />
-          <Stack.Screen
-            name='login'
-            options={{ presentation: 'modal' }}
-          />
-          <Stack.Screen
-            name='register'
-            options={{ presentation: 'modal' }}
-          />
-          <Stack.Screen
-            name='(tabs)'
-            options={{ headerShown: false }}
-          />
-        </Stack>
-      </ThemeProvider>
-    );
-  }
-  
-  export default function RootLayout() {
-    const [fontsLoaded, fontError] = useFonts({
-        Montserrat_100Thin,
-        Montserrat_200ExtraLight,
-        Montserrat_300Light,
-        Montserrat_400Regular,
-        Montserrat_500Medium,
-        Montserrat_600SemiBold,
-        Montserrat_700Bold,
-      // Para FontAwesome, você ainda pode manter como estava:
-      ...FontAwesome.font,
-    });
-  
+    const [fontsLoaded, setFontsLoaded] = React.useState(false);
     const { handleIsUserAlreadyLoggedIn, isLogged } = useAuth();
-  
-    const handleSplashScreen = async () => {
-      await handleIsUserAlreadyLoggedIn();
-      await SplashScreen.hideAsync();
+
+    const loadFonts = async () => {
+        try {
+            await loadAsync({
+                'Montserrat': require('@/assets/fonts/Montserrat-Regular.ttf'),
+            });
+        } catch (e) {
+            console.log(e);
+        } finally {
+            setFontsLoaded(true);
+        }
+        await SplashScreen.hideAsync();
     };
-  
+
+
     useEffect(() => {
-      if (fontError) throw fontError; // Lidar com erros de fonte
-    }, [fontError]);
-  
-    useEffect(() => {
-      if (fontsLoaded) handleSplashScreen();
-    }, [fontsLoaded]);
-  
+        loadFonts();
+    }, []);
+
     if (!fontsLoaded) return null;
-  
-    return <RootLayoutNavigation userAlreadyLogged={isLogged} />;
-  }
-  
+    return (
+        <ThemeProvider
+            value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+        >
+            <Stack initialRouteName={isLogged ? '(app)/(tabs)' : 'sign-in'}>
+                <Stack.Screen name='(app)/(tabs)' options={{ presentation: 'modal', headerShown: false }} />
+                <Stack.Screen
+                    name='sign-in'
+                    options={{ presentation: 'modal' }}
+                />
+                <Stack.Screen
+                    name='sign-up'
+                    options={{ presentation: 'modal' }}
+                />
+            </Stack>
+        </ThemeProvider>
+    );
+}
+
+export default function RootLayout() {
+    return <RootLayoutNavigation />;
+}

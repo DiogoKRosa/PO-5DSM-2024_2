@@ -1,7 +1,89 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
-// Componente SubjectsTable
+const subjectsData = [
+    { sigla: 'IAL', disciplina: 'Internet das Coisas e Aplicações', top: 42 },
+    { sigla: 'IHC', disciplina: 'Experiência do Usuário', top: 68 },
+    {
+        sigla: 'ILP',
+        disciplina: 'Programação para dispositivos móveis',
+        top: 94,
+    },
+    { sigla: 'ING', disciplina: 'Inglês II', top: 134 },
+    { sigla: 'IEC', disciplina: 'Integração e Entrega Continua', top: 160 },
+];
+
+// Componente HorariosScreen
+export default function HorariosScreen() {
+    return (
+        <View style={styles.container}>
+            <View style={styles.overlay} />
+
+            {/* SubjectsTable integrado */}
+            <SubjectsTable />
+
+            {/* ScrollView para permitir rolagem quando necessário */}
+            <ScrollView contentContainerStyle={styles.scheduleContainer}>
+                <ScheduleCard
+                    day='Segunda-feira'
+                    times={[
+                        '18:30 - 19:20',
+                        '19:20 - 20:10',
+                        '20:10 - 21:00',
+                        '21:10 - 22:00',
+                        '22:00 - 22:50',
+                    ]}
+                    subjects={['IAL', 'IAL', 'IAL', 'IHC', 'IHC']}
+                />
+                <ScheduleCard
+                    day='Terça-feira'
+                    times={[
+                        '18:30 - 19:20',
+                        '19:20 - 20:10',
+                        '20:10 - 21:00',
+                        '21:10 - 22:00',
+                        '22:00 - 22:50',
+                    ]}
+                    subjects={['IAL', 'IAL', 'IAL', 'IHC', 'IHC']}
+                />
+                <ScheduleCard
+                    day='Quarta-feira'
+                    times={[
+                        '18:30 - 19:20',
+                        '19:20 - 20:10',
+                        '20:10 - 21:00',
+                        '21:10 - 22:00',
+                        '22:00 - 22:50',
+                    ]}
+                    subjects={['IAL', 'IAL', 'IAL', 'IHC', 'IHC']}
+                />
+                <ScheduleCard
+                    day='Quinta-feira'
+                    times={[
+                        '18:30 - 19:20',
+                        '19:20 - 20:10',
+                        '20:10 - 21:00',
+                        '21:10 - 22:00',
+                        '22:00 - 22:50',
+                    ]}
+                    subjects={['IAL', 'IAL', 'IAL', 'IHC', 'IHC']}
+                />
+                <ScheduleCard
+                    day='Sexta-feira'
+                    times={[
+                        '18:30 - 19:20',
+                        '19:20 - 20:10',
+                        '20:10 - 21:00',
+                        '21:10 - 22:00',
+                        '22:00 - 22:50',
+                    ]}
+                    subjects={['IAL', 'IAL', 'IAL', 'IHC', 'IHC']}
+                />
+            </ScrollView>
+        </View>
+    );
+}
+
 function SubjectsTable() {
     return (
         <View style={styles.subjectsContainer}>
@@ -30,90 +112,6 @@ function SubjectsTable() {
         </View>
     );
 }
-
-const subjectsData = [
-    { sigla: 'IAL', disciplina: 'Internet das Coisas e Aplicações', top: 42 },
-    { sigla: 'IHC', disciplina: 'Experiência do Usuário', top: 68 },
-    {
-        sigla: 'ILP',
-        disciplina: 'Programação para dispositivos móveis',
-        top: 94,
-    },
-    { sigla: 'ING', disciplina: 'Inglês II', top: 134 },
-    { sigla: 'IEC', disciplina: 'Integração e Entrega Continua', top: 160 },
-];
-
-// Componente HorariosScreen
-export default function HorariosScreen() {
-    return (
-        <View style={styles.container}>
-            <View style={styles.overlay} />
-
-            {/* SubjectsTable integrado */}
-            <SubjectsTable />
-
-            {/* ScrollView para permitir rolagem quando necessário */}
-            <ScrollView contentContainerStyle={styles.scheduleContainer}>
-                <ScheduleCard
-                    day='Segunda - Feira'
-                    times={[
-                        '18:30 - 19:20',
-                        '19:20 - 20:10',
-                        '20:10 - 21:00',
-                        '21:10 - 22:00',
-                        '22:00 - 22:50',
-                    ]}
-                    subjects={['IAL', 'IAL', 'IAL', 'IHC', 'IHC']}
-                />
-                <ScheduleCard
-                    day='Terça - Feira'
-                    times={[
-                        '18:30 - 19:20',
-                        '19:20 - 20:10',
-                        '20:10 - 21:00',
-                        '21:10 - 22:00',
-                        '22:00 - 22:50',
-                    ]}
-                    subjects={['IAL', 'IAL', 'IAL', 'IHC', 'IHC']}
-                />
-                <ScheduleCard
-                    day='Quarta - Feira'
-                    times={[
-                        '18:30 - 19:20',
-                        '19:20 - 20:10',
-                        '20:10 - 21:00',
-                        '21:10 - 22:00',
-                        '22:00 - 22:50',
-                    ]}
-                    subjects={['IAL', 'IAL', 'IAL', 'IHC', 'IHC']}
-                />
-                <ScheduleCard
-                    day='Quinta - Feira'
-                    times={[
-                        '18:30 - 19:20',
-                        '19:20 - 20:10',
-                        '20:10 - 21:00',
-                        '21:10 - 22:00',
-                        '22:00 - 22:50',
-                    ]}
-                    subjects={['IAL', 'IAL', 'IAL', 'IHC', 'IHC']}
-                />
-                <ScheduleCard
-                    day='Sexta - Feira'
-                    times={[
-                        '18:30 - 19:20',
-                        '19:20 - 20:10',
-                        '20:10 - 21:00',
-                        '21:10 - 22:00',
-                        '22:00 - 22:50',
-                    ]}
-                    subjects={['IAL', 'IAL', 'IAL', 'IHC', 'IHC']}
-                />
-            </ScrollView>
-        </View>
-    );
-}
-
 // Componente ScheduleCard
 function ScheduleCard({ day, times, subjects }) {
     return (
@@ -122,7 +120,10 @@ function ScheduleCard({ day, times, subjects }) {
             {times.map((time, index) => (
                 <View
                     key={index}
-                    style={styles.scheduleRow}
+                    style={[
+                        styles.scheduleRow,
+                        index % 2 === 0 && { backgroundColor: '#ecf3fd' },
+                    ]}
                 >
                     <Text style={styles.scheduleSubject}>
                         {subjects[index]}
@@ -143,21 +144,22 @@ const styles = StyleSheet.create({
     overlay: {
         ...StyleSheet.absoluteFillObject,
         backgroundColor: 'white',
-        opacity: 0.77,
     },
     subjectsContainer: {
-        width: 378,
-        height: 188,
-        position: 'relative',
+        width: '100%',
+        minHeight: 210,
+        height: 'auto',
         backgroundColor: 'white',
-        marginTop: 20,
+        marginTop: 24,
+        elevation: 5,
     },
     subjectsTitle: {
         position: 'absolute',
         color: '#1A3E78',
         fontSize: 16,
+        marginTop: 4,
         fontFamily: 'Montserrat',
-        fontWeight: '600',
+        fontWeight: '700',
     },
     subjectSigla: {
         position: 'absolute',
@@ -165,7 +167,7 @@ const styles = StyleSheet.create({
         color: '#1A3E78',
         fontSize: 12,
         fontFamily: 'Montserrat',
-        fontWeight: '500',
+        fontWeight: '700',
     },
     subjectDisciplina: {
         position: 'absolute',
@@ -207,7 +209,9 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         marginTop: 30,
+        paddingHorizontal: 8,
         paddingBottom: 30, // Adicionado para garantir espaço ao final
+        elevation: 5,
     },
     scheduleCard: {
         width: '45%',
@@ -215,7 +219,8 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         alignItems: 'center',
         borderRadius: 16,
-        backgroundColor: 'rgba(112, 155, 239, 0.09)',
+        backgroundColor: '#c2d9f7',
+        elevation: 10,
     },
     scheduleCardDay: {
         fontSize: 12,
@@ -227,18 +232,19 @@ const styles = StyleSheet.create({
     scheduleRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: '90%',
+        width: '100%',
+        paddingHorizontal: 8,
+        paddingVertical: 4,
     },
     scheduleSubject: {
         fontSize: 12,
-        fontFamily: 'Montserrat',
-        fontWeight: '500',
+        fontWeight: '700',
         color: 'black',
     },
     scheduleTime: {
         fontSize: 12,
-        fontFamily: 'Montserrat',
         fontWeight: '500',
         color: '#2A2828',
+        fontFamily: 'Montserrat',
     },
 });
