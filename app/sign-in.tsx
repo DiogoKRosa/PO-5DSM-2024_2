@@ -1,20 +1,20 @@
 import { Button, StyleSheet } from 'react-native';
 import { Text, View } from '@/components/Themed';
-import { useAuth } from '@/hooks/auth';
-import { Link } from 'expo-router';
-
-export default function ModalScreen() {
-    const { handleLogin } = useAuth();
+import { Link, useNavigation, useRouter } from 'expo-router';
+export default function SignIn() {
+    const { replace } = useRouter();
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Login Screen</Text>
             <Button
                 title='Login'
-                onPress={handleLogin}
+                onPress={() => {
+                    replace('/(tabs)');
+                }}
             />
             <Link
                 style={{ color: 'white' }}
-                href={'/register'}
+                href={'/(tabs)'}
             >
                 Register
             </Link>
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: 'bold',
+        color: 'black',
     },
     separator: {
         marginVertical: 30,

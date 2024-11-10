@@ -12,5 +12,4 @@ export interface User {
     };
     academic_grade: number;
     // Adicione outros campos conforme a estrutura da sua API
-  }
-  
+}
