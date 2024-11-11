@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { colors } from '@/styles/colors';
+import Colors from '@/constants/Colors';
 
 interface CustomButtonProps {
     title: string;
@@ -21,13 +22,13 @@ const CustomButton: React.FC<CustomButtonProps> = ({ title, action }) => {
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: colors.blue[300],
+        backgroundColor: Colors.light.tint,
         padding: 10,
         borderRadius: 10,
         alignItems: 'center',
     },
     buttonText: {
-        color: colors.yellow,
+        color: 'white',
         fontSize: 16,
     },
 });

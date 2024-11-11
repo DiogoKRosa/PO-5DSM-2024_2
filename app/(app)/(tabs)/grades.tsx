@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import GradeTable from '@/components/Gradetable';
+import Colors from '@/constants/Colors';
 
 export default function TelaNotas() {
     const dados = {
@@ -40,7 +41,7 @@ export default function TelaNotas() {
                     style={{
                         height: 1,
                         width: '100%',
-                        backgroundColor: '#c0c0c0',
+                        backgroundColor: Colors.light.tabBorderColor,
                         marginVertical: 16,
                     }}
                 />
@@ -53,7 +54,7 @@ export default function TelaNotas() {
                     style={{
                         height: 1,
                         width: '100%',
-                        backgroundColor: '#c0c0c0',
+                        backgroundColor: Colors.light.tabBorderColor,
                         marginVertical: 16,
                     }}
                 />

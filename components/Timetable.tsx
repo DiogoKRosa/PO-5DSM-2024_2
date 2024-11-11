@@ -1,3 +1,4 @@
+import Colors from '@/constants/Colors';
 import { colors } from '@/styles/colors';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     evenRow: {
-        backgroundColor: colors.blue[100],
+        backgroundColor: Colors.light.text,
     },
     oddRow: {
         backgroundColor: 'transparent',

@@ -25,7 +25,7 @@ export default function TabLayout() {
         <Tabs
             screenOptions={{
                 headerShown: true,
-                headerTintColor: '#1A3E78',
+                headerTintColor: Colors.light.text,
                 tabBarLabelStyle: {
                     fontFamily: 'Montserrat',
                     fontWeight: '500',
@@ -39,12 +39,12 @@ export default function TabLayout() {
                     fontWeight: '500',
                 },
                 tabBarStyle: {
-                    backgroundColor: '#D2E0FB',
-                    borderTopWidth: 4,
-                    borderColor: '#D2E0FB',
+                    backgroundColor: Colors.light.background,
+                    borderTopWidth: 2,
+                    borderColor: Colors.light.tabBorderColor,
                 },
                 headerStyle: {
-                    backgroundColor: '#D2E0FB',
+                    backgroundColor: Colors.light.background,
                 },
             }}
         >
@@ -67,7 +67,7 @@ export default function TabLayout() {
                             <FontAwesome5
                                 name='user-circle'
                                 size={24}
-                                color='#1A3E78'
+                                color={Colors.light.tabIconDefault}
                             />
                         </View>
                     ),
@@ -92,7 +92,7 @@ export default function TabLayout() {
                             <FontAwesome5
                                 name='user-circle'
                                 size={24}
-                                color='#1A3E78'
+                                color={Colors.light.tabIconDefault}
                             />
                         </View>
                     ),
@@ -118,7 +118,7 @@ export default function TabLayout() {
                             <FontAwesome5
                                 name='user-circle'
                                 size={24}
-                                color='#1A3E78'
+                                color={Colors.light.tabIconDefault}
                             />
                         </View>
                     ),
@@ -143,7 +143,7 @@ export default function TabLayout() {
                             <FontAwesome5
                                 name='user-circle'
                                 size={24}
-                                color='#1A3E78'
+                                color={Colors.light.tabIconDefault}
                             />
                         </View>
                     ),
