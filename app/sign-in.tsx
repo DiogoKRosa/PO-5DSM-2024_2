@@ -27,7 +27,9 @@ export default function App() {
                     <View style={{ marginTop: 24 }} />
                     <CustomButton
                         title={'Entrar'}
-                        action={() => replace('/(app)/(tabs)')}
+                        action={() => { 
+                            replace('/(app)/(tabs)');
+                        }}
                     />
                     <View style={{ marginVertical: 8 }} />
                     <CustomButton

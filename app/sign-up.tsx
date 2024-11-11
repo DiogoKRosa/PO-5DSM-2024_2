@@ -4,8 +4,10 @@ import CustomInput from '@/components/CustomInput';
 import CustomButton from '@/components/CustomButton';
 import Colors from '@/constants/Colors';
 import { colors } from '@/styles/colors';
+import { useRouter } from 'expo-router';
 
 export default function App() {
+    const {replace} = useRouter();
     const [selectedValue, setSelectedValue] = useState('');
     const [inputValue, setInputValue] = useState('');
     const [inputValue2, setInputValue2] = useState('');
@@ -55,7 +57,10 @@ export default function App() {
 
                     <CustomButton
                         title={'Cadastrar'}
-                        action={() => alert(inputValue)}
+                        action={() => {
+                            alert('Registrado com sucesso!');
+                            replace('/sign-in');
+                        }}
                     />
                 </View>
             </View>
