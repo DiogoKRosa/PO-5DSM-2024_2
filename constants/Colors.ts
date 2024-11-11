@@ -10,7 +10,7 @@ export default {
         tint: tintColorLight,
         tabIconDefault: tintColorLight,
         tabIconSelected: tintColorLight,
-        tabBorderColor: '#D2E0FB'
+        tabBorderColor: '#D2E0FB',
     },
     dark: {
         text: '#fff',

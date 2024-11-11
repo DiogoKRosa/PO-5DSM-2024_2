@@ -52,16 +52,16 @@ function RootLayoutNavigation() {
         >
             <Stack initialRouteName={isLogged ? '(app)/(tabs)' : 'sign-in'}>
                 <Stack.Screen
-                    name='(app)/(tabs)'
-                    options={{ presentation: 'modal', headerShown: false }}
-                />
-                <Stack.Screen
                     name='sign-in'
-                    options={{ presentation: 'modal' }}
+                    options={{ presentation: 'card', title: 'Login' }}
                 />
                 <Stack.Screen
                     name='sign-up'
-                    options={{ presentation: 'modal' }}
+                    options={{ presentation: 'card', title: 'Cadastro' }}
+                />
+                <Stack.Screen
+                    name='(app)/(tabs)'
+                    options={{ presentation: 'card', headerShown: false }}
                 />
             </Stack>
         </ThemeProvider>

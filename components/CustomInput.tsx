@@ -72,6 +72,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         paddingHorizontal: 20,
         backgroundColor: Colors.light.background,
+        borderBottomWidth: 1,
+        borderBottomColor: '#acacac',
     },
     icon: {
         position: 'absolute',
