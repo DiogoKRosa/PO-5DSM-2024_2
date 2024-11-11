@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { colors } from '../styles/colors';
+import Colors from '@/constants/Colors';
 
 // Definindo a interface para as props
 interface CustomInputProps {
@@ -40,7 +41,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
                 value={value}
                 onChangeText={onChangeText}
                 placeholder={placeholder}
-                placeholderTextColor={colors.blue[200]}
+                placeholderTextColor={Colors.light.tint}
                 secureTextEntry={secureTextEntry && !isPasswordVisible} // Corrigido para usar a visibilidade do password
                 keyboardType={keyboardType}
             />
@@ -54,7 +55,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
                             isPasswordVisible ? 'visibility-off' : 'visibility'
                         }
                         size={24}
-                        color={colors.blue[200]}
+                        color={Colors.light.tint}
                     />
                 </TouchableOpacity>
             )}
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
         height: 40,
         borderRadius: 10,
         paddingHorizontal: 20,
-        backgroundColor: colors.blue[100],
+        backgroundColor: Colors.light.background,
     },
     icon: {
         position: 'absolute',

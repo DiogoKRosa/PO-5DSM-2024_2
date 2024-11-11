@@ -11,6 +11,7 @@ import {
 
 import api from '@/services/api';
 import { User } from '@/services/types/User';
+import Colors from '@/constants/Colors';
 
 export default function TelaAvisos() {
     const [user, setUser] = useState<User | null>(null);
@@ -120,17 +121,17 @@ const styles = StyleSheet.create({
         paddingHorizontal: 24,
     },
     nome: {
-        color: '#1A3E78',
+        color: Colors.light.text,
         fontWeight: '700',
         fontSize: 16,
     },
     email: {
-        color: '#1A3E78',
+        color: Colors.light.text,
         fontWeight: '700',
         fontSize: 12,
     },
     info: {
-        color: '#1A3E78',
+        color: Colors.light.text,
         fontSize: 14,
         padding: 4,
         fontFamily: 'Montserrat',
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
         width: '100%',
         minHeight: 300,
         padding: 10,
-        backgroundColor: '#D2E0FB',
+        backgroundColor: Colors.light.background,
         borderRadius: 10,
         marginTop: 60,
         marginBottom: 100,
@@ -159,7 +160,7 @@ const styles = StyleSheet.create({
     avisoTitle: {
         fontSize: 20,
         fontWeight: '700',
-        color: '#1A3E78',
+        color: Colors.light.text,
         fontFamily: 'Montserrat',
     },
     avisosContainer: {
@@ -173,7 +174,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     avisosText1: {
-        color: '#2C3E50',
+        color: Colors.light.text,
         flexWrap: 'wrap',
         textAlign: 'justify',
         fontFamily: 'Montserrat',
@@ -182,7 +183,7 @@ const styles = StyleSheet.create({
     avisosText2: {
         fontFamily: 'Montserrat',
         fontWeight: '700',
-        color: '#2C3E50',
+        color: Colors.light.text,
         flexWrap: 'wrap',
     },
     aaa: {

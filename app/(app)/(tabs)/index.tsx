@@ -1,3 +1,4 @@
+import Colors from '@/constants/Colors';
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
@@ -155,7 +156,7 @@ const styles = StyleSheet.create({
     },
     subjectsTitle: {
         position: 'absolute',
-        color: '#1A3E78',
+        color: Colors.light.text,
         fontSize: 16,
         marginTop: 4,
         fontFamily: 'Montserrat',
@@ -164,7 +165,7 @@ const styles = StyleSheet.create({
     subjectSigla: {
         position: 'absolute',
         left: 29,
-        color: '#1A3E78',
+        color: Colors.light.text,
         fontSize: 12,
         fontFamily: 'Montserrat',
         fontWeight: '700',
@@ -173,7 +174,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: 122,
         width: 216,
-        color: '#1A3E78',
+        color: Colors.light.text,
         fontSize: 12,
         fontFamily: 'Montserrat',
         fontWeight: '500',
@@ -187,7 +188,7 @@ const styles = StyleSheet.create({
         height: 1,
         left: 0,
         top: 31,
-        backgroundColor: '#D9D9D9',
+        backgroundColor: Colors.light.altBackground,
     },
     horizontalLineBottom: {
         position: 'absolute',
@@ -195,14 +196,14 @@ const styles = StyleSheet.create({
         height: 1,
         left: 0,
         top: 187,
-        backgroundColor: '#D9D9D9',
+        backgroundColor: Colors.light.altBackground,
     },
     verticalLine: {
         position: 'absolute',
         width: 1,
         height: 188,
         left: 96,
-        backgroundColor: '#D9D9D9',
+        backgroundColor: Colors.light.altBackground,
     },
     scheduleContainer: {
         flexDirection: 'row',
@@ -219,14 +220,14 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         alignItems: 'center',
         borderRadius: 16,
-        backgroundColor: '#c2d9f7',
+        backgroundColor: Colors.light.background,
         elevation: 10,
     },
     scheduleCardDay: {
         fontSize: 12,
         fontFamily: 'Montserrat',
         fontWeight: '600',
-        color: 'black',
+        color: Colors.light.altText,
         marginBottom: 10,
     },
     scheduleRow: {
@@ -239,12 +240,12 @@ const styles = StyleSheet.create({
     scheduleSubject: {
         fontSize: 12,
         fontWeight: '700',
-        color: 'black',
+        color: Colors.light.altText,
     },
     scheduleTime: {
         fontSize: 12,
         fontWeight: '500',
-        color: '#2A2828',
+        color: Colors.light.altText,
         fontFamily: 'Montserrat',
     },
 });
