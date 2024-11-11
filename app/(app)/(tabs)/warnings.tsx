@@ -31,18 +31,13 @@ export default function TelaAvisos() {
             date: '28-11-2024',
         },
         {
-            title: 'Aviso 2',
-            content: 'Esta é uma notificação de aviso 2',
-            date: '21-11-2024',
-        },
-        {
-            title: 'Aviso 3',
+            title: 'Aviso 1',
             content: 'Apresentação do Projeto Integrador',
             date: '04-12-2024',
         },
     ];
 
-    const studentId = 33;
+    const studentId = 1;
     const fetchUser = async () => {
         try {
             const response = await api.get<User>(`/api/students/${studentId}`); // Aqui a resposta é tipada como `User`
@@ -62,15 +57,12 @@ export default function TelaAvisos() {
                 <View style={styles.conteudo}>
                     <View style={styles.containerInfo}>
                         <View>
-                            <Text
-                                style={styles.info}
-                                key={user?.id}
-                            >
-                                {user?.name}
+                            <Text style={styles.info}>
+                                {user?.classroom.nameOfClass.replace("_", " ")}
                             </Text>
-
-                            <Text style={styles.info}>{dados.turma}</Text>
-                            <Text style={styles.info}>RA: {dados.ra}</Text>
+                            <Text style={styles.info}>
+                                RA: {user?.ra.replace('RA', '')}
+                            </Text>
                         </View>
                         <View>
                             <Text style={styles.info}>

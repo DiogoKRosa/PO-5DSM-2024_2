@@ -1,9 +1,29 @@
 import Colors from '@/constants/Colors';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import api from '@/services/api';
+import { User } from '@/services/types/User';
+
+const [user, setUser] = useState<User | null>(null);
+
+const studentId = 1;
+const fetchUser = async () => {
+    try {
+        const response = await api.get<User>(`/api/students/${studentId}`); // Aqui a resposta é tipada como `User`
+        setUser(response.data);
+    } catch (error) {
+        console.error('Erro ao buscar usuário:', error);
+    }
+};
+
+useEffect(() => {
+    fetchUser();
+}, []);
+
+const grades = user?.classroom.grade;
 
 const subjectsData = [
-    { sigla: 'IAL', disciplina: 'Internet das Coisas e Aplicações', top: 42 },
+    { sigla: grades.sigla, disciplina: grades.nameGrade, top: 42 },
     { sigla: 'IHC', disciplina: 'Experiência do Usuário', top: 68 },
     {
         sigla: 'ILP',

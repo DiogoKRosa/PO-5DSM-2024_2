@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     View,
     Text,
@@ -11,8 +11,26 @@ import {
 
 import GradeTable from '@/components/Gradetable';
 import Colors from '@/constants/Colors';
+import api from '@/services/api';
+import { User } from '@/services/types/User';
 
 export default function TelaNotas() {
+    const [user, setUser] = useState<User | null>(null);
+
+    const studentId = 1;
+    const fetchUser = async () => {
+        try {
+            const response = await api.get<User>(`/api/students/${studentId}`); // Aqui a resposta é tipada como `User`
+            setUser(response.data);
+        } catch (error) {
+            console.error('Erro ao buscar usuário:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchUser();
+    }, []);
+
     const dados = {
         nome: 'Lucas',
         email: 'lucas@facul.com',
@@ -21,47 +39,43 @@ export default function TelaNotas() {
         frequencia: 72.33,
     };
 
-    const testData2 = [
-        { key: 'Atividades 1', value: '4,5' },
-        { key: 'Avaliação', value: '6,7' },
-        { key: 'Projetos', value: '9,4' },
-        { key: 'Atividades 2', value: '6,5' },
-        { key: 'Média', value: '6,7' },
-    ];
+    const grades = user?.gradeNotesList;
 
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.gradeContainer}>
-                <GradeTable
-                    weekday='Programação para dispositivos móveis I'
-                    data={testData2}
-                />
-                <View
-                    aria-labelledby='divider'
-                    style={{
-                        height: 1,
-                        width: '100%',
-                        backgroundColor: Colors.light.tabBorderColor,
-                        marginVertical: 16,
-                    }}
-                />
-                <GradeTable
-                    weekday='Programação para dispositivos móveis II'
-                    data={testData2}
-                />
-                <View
-                    aria-labelledby='divider'
-                    style={{
-                        height: 1,
-                        width: '100%',
-                        backgroundColor: Colors.light.tabBorderColor,
-                        marginVertical: 16,
-                    }}
-                />
-                <GradeTable
-                    weekday='Laboratório de Desenvolvimento para Dispositivos Móveis'
-                    data={testData2}
-                />
+                {grades.map((grade, index) => {
+                    // Definindo o objeto `data` corretamente dentro do loop
+                    const data = [
+                        { key: 'Atividades 1', value:  JSON.stringify(grade.atividade_um) },
+                        {
+                            key: 'Avaliação Integradora',
+                            value: JSON.stringify(grade.avaliacao_integradora),
+                        },
+                        { key: 'Projeto Integrador', value: JSON.stringify(grade.projeto_integrador) },
+                        { key: 'Atividades 2', value: JSON.stringify(grade.atividade_dois) },
+                        { key: 'Média', value: JSON.stringify(grade.media) },
+                    ];
+
+                    return (
+                        <React.Fragment key={index}>
+                            <GradeTable
+                                weekday='Programação para dispositivos móveis I' // Ou outra variável que você deseje
+                                data={data} // Passando os dados corretos para o componente
+                            />
+                            <View
+                                aria-labelledby='divider'
+                                style={{
+                                    height: 1,
+                                    width: '100%',
+                                    backgroundColor:
+                                        Colors.light.tabBorderColor,
+                                    marginVertical: 16,
+                                }}
+                            />
+                        </React.Fragment>
+                    );
+                })}
             </ScrollView>
         </SafeAreaView>
     );

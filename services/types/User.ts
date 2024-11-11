@@ -1,15 +1,32 @@
-// src/types/User.ts
 export interface User {
     id: number;
     name: string;
     email: string;
-    dateOfBirth: Date;
-    academic_year: string;
-    attendance: {
+    ra: string;
+    academicYear: string;
+    attendanceList: {
+      id: number;
+      subjectEnumeration: string;
+      sigla: string;
+      attendanceDate: string;
+      attendanceStatus: string;
+    }[];
+    classroom: {
+      id: number;
+      nameOfClass: string;
+      grade: {
         id: number;
-        attendanceDate: Date;
-        status: string;
+        nameGrade: string;
+        sigla: string;
+      }[];
     };
-    academic_grade: number;
-    // Adicione outros campos conforme a estrutura da sua API
-}
+    gradeNotesList: {
+      id: number;
+      subject: string;
+      atividade_um: number;
+      atividade_dois: number;
+      projeto_integrador: number;
+      avaliacao_integradora: number;
+      media: number;
+    }[];
+  }
