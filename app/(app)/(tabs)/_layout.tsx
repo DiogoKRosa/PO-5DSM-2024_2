@@ -1,10 +1,10 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Tabs } from 'expo-router';
+import { Tabs, useRouter } from 'expo-router';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { FontAwesome5, FontAwesome6 } from '@expo/vector-icons';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 
 function TabBarIcon(props: {
     name: React.ComponentProps<typeof FontAwesome>['name'];
@@ -21,6 +21,7 @@ function TabBarIcon(props: {
 
 export default function TabLayout() {
     const colorScheme = useColorScheme();
+    const { replace } = useRouter();
     return (
         <Tabs
             screenOptions={{
@@ -59,7 +60,10 @@ export default function TabLayout() {
                         />
                     ),
                     headerRight: () => (
-                        <View
+                        <Pressable
+                            onPress={() => {
+                                replace('/sign-in');
+                            }}
                             style={{
                                 marginRight: 12,
                             }}
@@ -69,7 +73,7 @@ export default function TabLayout() {
                                 size={24}
                                 color={Colors.light.tabIconDefault}
                             />
-                        </View>
+                        </Pressable>
                     ),
                 }}
             />
@@ -84,7 +88,10 @@ export default function TabLayout() {
                         />
                     ),
                     headerRight: () => (
-                        <View
+                        <Pressable
+                            onPress={() => {
+                                replace('/sign-in');
+                            }}
                             style={{
                                 marginRight: 12,
                             }}
@@ -94,7 +101,7 @@ export default function TabLayout() {
                                 size={24}
                                 color={Colors.light.tabIconDefault}
                             />
-                        </View>
+                        </Pressable>
                     ),
                 }}
             />
@@ -110,7 +117,10 @@ export default function TabLayout() {
                         />
                     ),
                     headerRight: () => (
-                        <View
+                        <Pressable
+                            onPress={() => {
+                                replace('/sign-in');
+                            }}
                             style={{
                                 marginRight: 12,
                             }}
@@ -120,7 +130,7 @@ export default function TabLayout() {
                                 size={24}
                                 color={Colors.light.tabIconDefault}
                             />
-                        </View>
+                        </Pressable>
                     ),
                 }}
             />
@@ -135,7 +145,10 @@ export default function TabLayout() {
                         />
                     ),
                     headerRight: () => (
-                        <View
+                        <Pressable
+                            onPress={() => {
+                                replace('/sign-in');
+                            }}
                             style={{
                                 marginRight: 12,
                             }}
@@ -145,7 +158,7 @@ export default function TabLayout() {
                                 size={24}
                                 color={Colors.light.tabIconDefault}
                             />
-                        </View>
+                        </Pressable>
                     ),
                 }}
             />
